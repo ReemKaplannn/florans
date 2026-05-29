@@ -420,92 +420,39 @@
 
   <!-- ══════ ABOUT ══════ -->
   <section id="about">
-    <!-- Watercolor splash background -->
+    <!-- Flowing lines background -->
     <svg viewBox="0 0 1200 1900" preserveAspectRatio="xMidYMid slice"
          xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
          style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden">
-      <defs>
-        <filter id="wc1" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="14"/>
-        </filter>
-        <filter id="wc2" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="6"/>
-        </filter>
-        <filter id="wc3" x="-10%" y="-10%" width="120%" height="120%">
-          <feGaussianBlur stdDeviation="2"/>
-        </filter>
-      </defs>
 
-      <!-- ══ BIG BLOB — top right, blush-gold ══ -->
-      <path d="M 950,−60 C 1080,−20 1250,40 1280,160 C 1310,280 1220,370 1080,380
-               C 920,392 780,310 730,180 C 690,80 780,−40 950,−60 Z"
-            fill="rgba(200,168,106,0.55)" filter="url(#wc1)"/>
-      <!-- lighter inner highlight -->
-      <path d="M 980,20 C 1090,50 1210,100 1220,200 C 1170,280 1020,290 900,220
-               C 800,162 820,60 980,20 Z"
-            fill="rgba(240,218,168,0.40)" filter="url(#wc2)"/>
+      <!-- long sweeping curves that drift across the page -->
+      <path d="M -80,180 C 200,80 480,260 720,200 C 960,140 1100,300 1320,220"
+            fill="none" stroke="rgba(200,168,106,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M -80,210 C 180,130 440,290 700,240 C 920,196 1080,340 1320,270"
+            fill="none" stroke="rgba(200,168,106,0.14)" stroke-width="1" stroke-linecap="round"/>
 
-      <!-- ══ BRUSH STROKE — diagonal swipe top-left ══ -->
-      <path d="M −100,120 C 80,60 320,90 460,180 C 560,248 540,330 400,360
-               C 240,392 40,350 −60,260 C −140,188 −130,140 −100,120 Z"
-            fill="rgba(210,176,120,0.50)" filter="url(#wc1)"/>
-      <path d="M −40,155 C 110,110 300,140 420,210 C 370,290 180,308 40,265 Z"
-            fill="rgba(238,208,158,0.38)" filter="url(#wc2)"/>
+      <path d="M 1320,480 C 1040,400 780,560 520,490 C 280,424 100,580 -80,510"
+            fill="none" stroke="rgba(200,168,106,0.26)" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M 1320,510 C 1060,440 800,590 550,528 C 310,466 120,610 -80,545"
+            fill="none" stroke="rgba(200,168,106,0.13)" stroke-width="1" stroke-linecap="round"/>
 
-      <!-- ══ BLOB CENTER — wide watercolor wash ══ -->
-      <path d="M 180,820 C 380,740 720,730 960,780 C 1120,818 1180,900 1100,980
-               C 1010,1062 740,1080 460,1050 C 220,1024 60,960 100,880 Z"
-            fill="rgba(205,170,110,0.48)" filter="url(#wc1)"/>
-      <path d="M 300,860 C 520,810 800,818 1000,870 C 920,960 580,978 340,938 Z"
-            fill="rgba(240,212,158,0.36)" filter="url(#wc2)"/>
+      <path d="M -80,800 C 240,700 500,880 780,810 C 1020,748 1160,900 1320,840"
+            fill="none" stroke="rgba(200,168,106,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M -80,832 C 220,740 490,908 770,845 C 1010,785 1150,930 1320,875"
+            fill="none" stroke="rgba(200,168,106,0.13)" stroke-width="1" stroke-linecap="round"/>
 
-      <!-- ══ BLOB — bottom-right ══ -->
-      <path d="M 860,1420 C 1020,1340 1240,1380 1310,1510 C 1348,1580 1300,1660 1180,1690
-               C 1030,1726 840,1690 760,1580 C 700,1498 760,1448 860,1420 Z"
-            fill="rgba(200,165,106,0.52)" filter="url(#wc1)"/>
-      <path d="M 920,1460 C 1060,1400 1220,1440 1270,1540 C 1200,1610 1020,1620 900,1555 Z"
-            fill="rgba(235,205,150,0.38)" filter="url(#wc2)"/>
+      <path d="M 1320,1120 C 1000,1030 720,1190 460,1120 C 220,1056 60,1200 -80,1150"
+            fill="none" stroke="rgba(200,168,106,0.26)" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M 1320,1152 C 1020,1068 740,1220 480,1155 C 240,1092 70,1230 -80,1182"
+            fill="none" stroke="rgba(200,168,106,0.13)" stroke-width="1" stroke-linecap="round"/>
 
-      <!-- ══ BLOB — bottom-left ══ -->
-      <path d="M −120,1580 C 60,1495 310,1520 430,1640 C 485,1700 456,1778 340,1810
-               C 190,1852 −20,1826 −120,1728 C −188,1664 −170,1610 −120,1580 Z"
-            fill="rgba(215,178,120,0.50)" filter="url(#wc1)"/>
+      <path d="M -80,1440 C 260,1340 540,1510 820,1440 C 1060,1378 1180,1520 1320,1460"
+            fill="none" stroke="rgba(200,168,106,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M -80,1472 C 240,1380 520,1542 800,1476 C 1040,1414 1165,1550 1320,1492"
+            fill="none" stroke="rgba(200,168,106,0.13)" stroke-width="1" stroke-linecap="round"/>
 
-      <!-- ══ BRUSH FLICK STROKES — long and bold ══ -->
-      <!-- top diagonal flick -->
-      <path d="M 580,40 C 720,20 900,55 1060,30 C 980,90 760,105 600,80 Z"
-            fill="rgba(200,168,106,0.55)" filter="url(#wc3)"/>
-      <!-- mid-right flick -->
-      <path d="M 900,640 C 1040,610 1200,648 1260,690 C 1180,730 1010,720 870,685 Z"
-            fill="rgba(210,176,118,0.52)" filter="url(#wc3)"/>
-      <!-- mid-left flick -->
-      <path d="M −60,1150 C 80,1118 260,1136 360,1175 C 280,1218 80,1222 −40,1186 Z"
-            fill="rgba(200,168,106,0.50)" filter="url(#wc3)"/>
-      <!-- bottom flick -->
-      <path d="M 400,1840 C 560,1812 740,1828 880,1860 C 780,1900 560,1902 420,1876 Z"
-            fill="rgba(210,176,118,0.48)" filter="url(#wc3)"/>
-
-      <!-- ══ SPLATTER DROPLETS ══ -->
-      <circle cx="1130" cy="560"  r="48"  fill="rgba(200,168,106,0.45)" filter="url(#wc2)"/>
-      <circle cx="1110" cy="548"  r="22"  fill="rgba(238,210,160,0.50)" filter="url(#wc3)"/>
-      <circle cx="1150" cy="580"  r="12"  fill="rgba(200,168,106,0.55)" filter="url(#wc3)"/>
-
-      <circle cx="70"   cy="470"  r="42"  fill="rgba(210,176,114,0.44)" filter="url(#wc2)"/>
-      <circle cx="50"   cy="455"  r="18"  fill="rgba(238,210,158,0.48)" filter="url(#wc3)"/>
-      <circle cx="100"  cy="495"  r="10"  fill="rgba(200,168,106,0.52)" filter="url(#wc3)"/>
-
-      <circle cx="600"  cy="1720" r="40"  fill="rgba(200,165,106,0.44)" filter="url(#wc2)"/>
-      <circle cx="580"  cy="1705" r="16"  fill="rgba(238,208,158,0.48)" filter="url(#wc3)"/>
-
-      <circle cx="350"  cy="1320" r="34"  fill="rgba(210,176,116,0.42)" filter="url(#wc2)"/>
-      <circle cx="870"  cy="260"  r="28"  fill="rgba(200,168,106,0.46)" filter="url(#wc2)"/>
-      <circle cx="450"  cy="600"  r="22"  fill="rgba(214,180,120,0.44)" filter="url(#wc2)"/>
-
-      <!-- tiny accent drops -->
-      <circle cx="1070" cy="1200" r="14"  fill="rgba(200,168,106,0.50)" filter="url(#wc3)"/>
-      <circle cx="160"  cy="1450" r="12"  fill="rgba(210,176,118,0.48)" filter="url(#wc3)"/>
-      <circle cx="730"  cy="380"  r="10"  fill="rgba(200,168,106,0.52)" filter="url(#wc3)"/>
-      <circle cx="980"  cy="1100" r="16"  fill="rgba(214,180,122,0.46)" filter="url(#wc3)"/>
+      <path d="M 1320,1760 C 1000,1670 700,1830 420,1762 C 180,1702 20,1840 -80,1790"
+            fill="none" stroke="rgba(200,168,106,0.24)" stroke-width="1.6" stroke-linecap="round"/>
 
     </svg>
 
