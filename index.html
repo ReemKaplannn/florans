@@ -164,44 +164,83 @@
        ABOUT — 3 פסקאות
     ══════════════════════════════ */
     #about {
-      background: var(--bg);
-      padding: 6rem 1.5rem 5rem;
+      padding: 7rem 1.5rem 6rem;
+      position: relative;
+      overflow: hidden;
+      /* flowing organic background */
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 20%, rgba(200,168,106,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 75%, rgba(200,168,106,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(244,237,228,0.7) 0%, transparent 70%),
+        #FAF8F4;
+    }
+
+    /* Flowing SVG wave accent — purely decorative */
+    #about::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -180px;
+      width: 600px;
+      height: 600px;
+      border-radius: 44% 56% 60% 40% / 42% 48% 52% 58%;
+      background: rgba(200,168,106,0.06);
+      pointer-events: none;
+      animation: morph1 14s ease-in-out infinite;
+    }
+    #about::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      border-radius: 60% 40% 44% 56% / 52% 58% 42% 48%;
+      background: rgba(200,168,106,0.05);
+      pointer-events: none;
+      animation: morph2 18s ease-in-out infinite;
+    }
+    @keyframes morph1 {
+      0%,100% { border-radius: 44% 56% 60% 40% / 42% 48% 52% 58%; }
+      50%      { border-radius: 60% 40% 44% 56% / 58% 42% 60% 40%; }
+    }
+    @keyframes morph2 {
+      0%,100% { border-radius: 60% 40% 44% 56% / 52% 58% 42% 48%; }
+      50%      { border-radius: 40% 60% 56% 44% / 48% 42% 58% 52%; }
     }
 
     .about-block {
-      max-width: 620px;
+      max-width: 600px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .about-block + .about-block {
-      margin-top: 4rem;
+      margin-top: 5rem;
+      padding-top: 4rem;
+      border-top: 1px solid rgba(200,168,106,0.22);
     }
 
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 600;
-      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-size: clamp(2.1rem, 4.5vw, 2.9rem);
       color: var(--text);
       margin-bottom: 1.4rem;
-      line-height: 1.15;
+      line-height: 1.1;
       letter-spacing: 0.01em;
     }
 
     .body-text {
       font-family: 'Heebo', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 1.05rem;
-      line-height: 2.3;
-      color: var(--text-body);
-    }
-
-    /* Botanical SVG between sections */
-    .botanical {
-      display: block;
-      margin: 3.5rem auto;
-      opacity: 0.5;
+      line-height: 2.4;
+      color: #4A3F38;
+      letter-spacing: 0.01em;
     }
 
     /* ══════════════════════════════
@@ -324,11 +363,10 @@
     .btn-wa:hover { background: var(--gold); }
 
     .btn-ig {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--gold);
+      background: var(--text);
+      color: #fff;
     }
-    .btn-ig:hover { background: var(--bg-alt); }
+    .btn-ig:hover { background: var(--gold); }
 
 
     /* ══════════════════════════════
@@ -424,14 +462,6 @@
       </p>
     </div>
 
-    <!-- botanical divider -->
-    <svg class="botanical" width="56" height="34" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="30" y1="36" x2="30" y2="0" stroke="#C8A86A" stroke-width="1"/>
-      <path d="M30 26 Q20 20 22 12 Q28 18 30 26Z" fill="#C8A86A" opacity="0.65"/>
-      <path d="M30 26 Q40 20 38 12 Q32 18 30 26Z" fill="#C8A86A" opacity="0.65"/>
-      <path d="M30 10 Q24 2 30 0 Q36 2 30 10Z" fill="#C8A86A" opacity="0.5"/>
-    </svg>
-
     <div class="about-block fade-in">
       <h2 class="section-title">על התכשיטים</h2>
       <p class="body-text">
@@ -440,13 +470,6 @@
         העדין של הטבע יוצר תכשיטים מיוחדים, אלגנטיים ועדינים שנועדו להישמר לאורך זמן.
       </p>
     </div>
-
-    <svg class="botanical" width="56" height="34" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <line x1="30" y1="36" x2="30" y2="0" stroke="#C8A86A" stroke-width="1"/>
-      <path d="M30 26 Q20 20 22 12 Q28 18 30 26Z" fill="#C8A86A" opacity="0.65"/>
-      <path d="M30 26 Q40 20 38 12 Q32 18 30 26Z" fill="#C8A86A" opacity="0.65"/>
-      <path d="M30 10 Q24 2 30 0 Q36 2 30 10Z" fill="#C8A86A" opacity="0.5"/>
-    </svg>
 
     <div class="about-block fade-in">
       <h2 class="section-title">עיצוב אישי</h2>
@@ -464,8 +487,7 @@
   <!-- ══════ GALLERY ══════ -->
   <section id="gallery">
     <div class="gallery-header fade-in">
-      <h2 class="section-title">מהגלריה</h2>
-      <p>לחצי על תמונה לצפייה מקרוב</p>
+      <h2 class="section-title">גלריה</h2>
     </div>
 
     <!--
@@ -497,7 +519,7 @@
             <circle cx="12" cy="12" r="4"/>
             <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
           </svg>
-          עקבי באינסטגרם
+          אינסטגרם
         </button>
       </div>
     </div>
