@@ -167,46 +167,78 @@
       padding: 7rem 1.5rem 6rem;
       position: relative;
       overflow: hidden;
-      /* flowing organic background */
-      background:
-        radial-gradient(ellipse 80% 60% at 15% 20%, rgba(200,168,106,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 85% 75%, rgba(200,168,106,0.08) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(244,237,228,0.7) 0%, transparent 70%),
-        #FAF8F4;
+      background: #FAF8F4;
     }
 
-    /* Flowing SVG wave accent — purely decorative */
-    #about::before {
-      content: '';
+    /* Inline SVG background — flowing ink-like organic shapes */
+    #about .about-bg {
       position: absolute;
-      top: -120px;
-      right: -180px;
-      width: 600px;
-      height: 600px;
-      border-radius: 44% 56% 60% 40% / 42% 48% 52% 58%;
-      background: rgba(200,168,106,0.06);
+      inset: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      animation: morph1 14s ease-in-out infinite;
+      z-index: 0;
     }
-    #about::after {
-      content: '';
+
+    /* Blob 1 — top right */
+    #about .blob1 {
       position: absolute;
-      bottom: -100px;
-      left: -150px;
-      width: 500px;
-      height: 500px;
-      border-radius: 60% 40% 44% 56% / 52% 58% 42% 48%;
-      background: rgba(200,168,106,0.05);
+      top: -80px;
+      right: -120px;
+      width: 520px;
+      height: 520px;
+      border-radius: 38% 62% 55% 45% / 48% 38% 62% 52%;
+      background: radial-gradient(circle at 40% 40%, rgba(200,168,106,0.13) 0%, rgba(200,168,106,0.04) 55%, transparent 75%);
+      animation: blob1 16s ease-in-out infinite;
       pointer-events: none;
-      animation: morph2 18s ease-in-out infinite;
     }
-    @keyframes morph1 {
-      0%,100% { border-radius: 44% 56% 60% 40% / 42% 48% 52% 58%; }
-      50%      { border-radius: 60% 40% 44% 56% / 58% 42% 60% 40%; }
+
+    /* Blob 2 — bottom left */
+    #about .blob2 {
+      position: absolute;
+      bottom: -60px;
+      left: -100px;
+      width: 440px;
+      height: 440px;
+      border-radius: 62% 38% 45% 55% / 52% 62% 38% 48%;
+      background: radial-gradient(circle at 60% 60%, rgba(200,168,106,0.10) 0%, rgba(232,208,164,0.05) 50%, transparent 72%);
+      animation: blob2 20s ease-in-out infinite;
+      pointer-events: none;
     }
-    @keyframes morph2 {
-      0%,100% { border-radius: 60% 40% 44% 56% / 52% 58% 42% 48%; }
-      50%      { border-radius: 40% 60% 56% 44% / 48% 42% 58% 52%; }
+
+    /* Blob 3 — center flow */
+    #about .blob3 {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 340px;
+      border-radius: 50% 50% 42% 58% / 60% 40% 60% 40%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(232,216,180,0.09) 0%, transparent 65%);
+      animation: blob3 24s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* Thin flowing line accents */
+    #about .line-accent {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    @keyframes blob1 {
+      0%,100% { border-radius: 38% 62% 55% 45% / 48% 38% 62% 52%; transform: rotate(0deg) scale(1); }
+      33%      { border-radius: 55% 45% 38% 62% / 62% 52% 48% 38%; transform: rotate(8deg) scale(1.04); }
+      66%      { border-radius: 62% 38% 62% 38% / 38% 62% 38% 62%; transform: rotate(-5deg) scale(0.97); }
+    }
+    @keyframes blob2 {
+      0%,100% { border-radius: 62% 38% 45% 55% / 52% 62% 38% 48%; transform: rotate(0deg) scale(1); }
+      40%      { border-radius: 45% 55% 62% 38% / 38% 48% 62% 52%; transform: rotate(-10deg) scale(1.06); }
+      70%      { border-radius: 38% 62% 55% 45% / 62% 38% 48% 52%; transform: rotate(6deg) scale(0.95); }
+    }
+    @keyframes blob3 {
+      0%,100% { border-radius: 50% 50% 42% 58% / 60% 40% 60% 40%; transform: translateX(-50%) scaleX(1); }
+      50%      { border-radius: 42% 58% 50% 50% / 40% 60% 40% 60%; transform: translateX(-50%) scaleX(1.08); }
     }
 
     .about-block {
@@ -452,6 +484,23 @@
 
   <!-- ══════ ABOUT ══════ -->
   <section id="about">
+    <!-- Flowing organic background shapes -->
+    <div class="blob1"></div>
+    <div class="blob2"></div>
+    <div class="blob3"></div>
+    <!-- Thin flowing SVG lines -->
+    <svg class="line-accent" style="top:0;left:0;width:100%;height:100%;opacity:0.35;" viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M-50 200 C 200 100, 400 400, 600 250 S 900 0, 1250 300" stroke="#C8A86A" stroke-width="0.6" fill="none" opacity="0.4"/>
+      <path d="M-50 600 C 150 500, 350 800, 650 650 S 950 400, 1250 700" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.3"/>
+      <path d="M-50 1100 C 300 950, 500 1300, 750 1100 S 1000 850, 1250 1200" stroke="#C8A86A" stroke-width="0.6" fill="none" opacity="0.35"/>
+      <path d="M-50 1500 C 200 1380, 450 1650, 700 1480 S 1000 1300, 1250 1600" stroke="#C8A86A" stroke-width="0.4" fill="none" opacity="0.25"/>
+      <!-- Small petal-like accents -->
+      <ellipse cx="80" cy="450" rx="18" ry="9" transform="rotate(-30 80 450)" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.3"/>
+      <ellipse cx="1120" cy="900" rx="14" ry="7" transform="rotate(20 1120 900)" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.25"/>
+      <ellipse cx="600" cy="1350" rx="16" ry="8" transform="rotate(-15 600 1350)" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.28"/>
+      <circle cx="150" cy="1200" r="4" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.2"/>
+      <circle cx="1050" cy="400" r="3" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.2"/>
+    </svg>
 
     <div class="about-block fade-in">
       <h2 class="section-title">קצת עלי</h2>
