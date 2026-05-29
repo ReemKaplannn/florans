@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Florans — תכשיטים עם פרחים אמיתיים</title>
+  <meta name="description" content="תכשיטים בעיצוב אישי עם פרחים מיובשים אמיתיים. כל תכשיט נעשה בהזמנה ובעבודת יד." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #FAF8F4;
+      --bg-alt:    #F4EDE4;
+      --text:      #2C2520;
+      --text-sec:  #7A6E68;
+      --text-body: #5C4F45;
+      --gold:      #C8A86A;
+      --border:    #EAE0D6;
+      --white:     #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* ─── Section fade-in animation ─── */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* ════════════════════════════════════════
+       SECTION 1 — HERO VIDEO CAROUSEL
+    ════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #1a1410; /* fallback if video can't play */
+    }
+
+    /* Video fallback gradient — shown until first video loads */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #c8b89a 0%, #e8d8c4 40%, #b8a07a 100%);
+      z-index: 0;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 1;
+    }
+    .hero-video.active { opacity: 1; }
+
+    /* Overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .hero-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 8vw, 4rem);
+      color: var(--white);
+      letter-spacing: 0.2em;
+      line-height: 1.1;
+    }
+
+    .hero-line {
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 12px auto;
+    }
+
+    .hero-tagline {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      opacity: 0.92;
+    }
+
+    /* Dot navigation */
+    .hero-dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+    .hero-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-dot.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: scale(1.3);
+    }
+
+
+    /* ════════════════════════════════════════
+       SECTION 2 — ABOUT
+    ════════════════════════════════════════ */
+    #about {
+      background: var(--bg);
+      padding: 5rem 1.5rem;
+    }
+
+    .about-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .body-text {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 2.2;
+      color: var(--text-body);
+    }
+
+    /* Botanical SVG divider */
+    .botanical-divider {
+      margin: 3rem auto;
+      display: block;
+      width: 60px;
+      height: 36px;
+      opacity: 0.75;
+    }
+
+
+    /* ════════════════════════════════════════
+       SECTION 3 — PERSONAL DESIGN
+    ════════════════════════════════════════ */
+    #personal {
+      background: var(--bg-alt);
+      padding: 5rem 1.5rem;
+    }
+
+    .personal-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    /* On RTL: text right column, photos left column */
+    .personal-text { order: 1; }
+    .personal-photos { order: 2; }
+
+    .personal-text .section-title { text-align: right; }
+    .personal-text .body-text { text-align: right; }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .photo-item {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #e8d8c0 0%, #d4b882 50%, #e8d0b0 100%);
+      /* ADD YOUR PHOTOS TO /images FOLDER — replace gradient with <img> */
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* Mobile: stack */
+    @media (max-width: 680px) {
+      .personal-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .personal-text { order: 1; }
+      .personal-photos { order: 2; }
+      .personal-text .section-title,
+      .personal-text .body-text { text-align: center; }
+    }
+
+
+    /* ════════════════════════════════════════
+       SECTION 4 — CONTACT / CTA
+    ════════════════════════════════════════ */
+    #contact {
+      background: var(--bg);
+      padding: 5rem 1.5rem 4.5rem;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 2.2rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-subtitle {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--text-sec);
+      margin-bottom: 2.4rem;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.85rem 2rem;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .btn-whatsapp {
+      background: var(--text);
+      color: var(--white);
+    }
+    .btn-whatsapp:hover { background: var(--gold); }
+
+    .btn-instagram {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--gold);
+    }
+    .btn-instagram:hover { background: var(--bg-alt); }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      color: #B0A090;
+      border-top: 1px solid var(--border);
+    }
+
+
+    /* ─── Global responsive ─── */
+    @media (max-width: 480px) {
+      .hero-brand { font-size: 2.6rem; }
+      .hero-tagline { font-size: 0.85rem; }
+      .section-title { font-size: 1.7rem; }
+      .contact-title { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       SECTION 1 — HERO VIDEO CAROUSEL
+  ════════════════════════════════════════ -->
+  <section id="hero">
+
+    <!--
+      ADD YOUR VIDEO FILES TO /videos FOLDER
+      Name them: video1.mp4, video2.mp4, ... video13.mp4
+      Videos play sequentially in a loop with 1s crossfade.
+    -->
+    <video class="hero-video" id="v0" muted playsinline preload="auto"></video>
+    <video class="hero-video" id="v1" muted playsinline preload="none"></video>
+
+    <div class="hero-overlay">
+      <h1 class="hero-brand">Florans</h1>
+      <div class="hero-line"></div>
+      <p class="hero-tagline">תכשיטים עם פרחים אמיתיים, בעיצוב אישי עבורך</p>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SECTION 2 — ABOUT
+  ════════════════════════════════════════ -->
+  <section id="about">
+    <div class="about-inner fade-section">
+
+      <h2 class="section-title">קצת עלי</h2>
+      <p class="body-text">
+        היי אני נעמה. את העסק שלי לתכשיטים התחלתי מתוך אהבה ליצירה ועבודת יד.
+        היום אני יוצרת תכשיטים בעיצוב אישי, בעזרת תהליך של ייבוש פרחים אמיתיים מהטבע.
+        דגש על עבודה מקצועית ויחס אישי לכל הזמנה.
+      </p>
+
+      <!-- Botanical SVG divider — thin stem + 3 small leaves, gold -->
+      <svg class="botanical-divider" viewBox="0 0 60 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="30" y1="36" x2="30" y2="0" stroke="#C8A86A" stroke-width="1"/>
+        <!-- leaf left bottom -->
+        <path d="M30 26 Q20 20 22 12 Q28 18 30 26Z" fill="#C8A86A" opacity="0.7"/>
+        <!-- leaf right bottom -->
+        <path d="M30 26 Q40 20 38 12 Q32 18 30 26Z" fill="#C8A86A" opacity="0.7"/>
+        <!-- leaf top center -->
+        <path d="M30 10 Q24 2 30 0 Q36 2 30 10Z" fill="#C8A86A" opacity="0.55"/>
+      </svg>
+
+      <h2 class="section-title">על התכשיטים</h2>
+      <p class="body-text">
+        התכשיטים שלי מיוצרים מחומרים איכותיים כמו גולדפילד, ציפוי זהב וכסף 925,
+        בשילוב אפוקסי ופרחים מיובשים שנשמרים בתוך העיצוב. השילוב בין החומרים ליופי
+        העדין של הטבע יוצר תכשיטים מיוחדים, אלגנטיים ועדינים שנועדו להישמר לאורך זמן.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SECTION 3 — PERSONAL DESIGN + PHOTOS
+  ════════════════════════════════════════ -->
+  <section id="personal">
+    <div class="personal-inner fade-section">
+
+      <div class="personal-text">
+        <h2 class="section-title">עיצוב אישי</h2>
+        <p class="body-text">
+          כל תכשיט נעשה בהזמנה אישית ובעיצוב מותאם במיוחד עבורך.
+          אפשר לבחור את סוג התכשיט, הפרח והסגנון שאהבת.
+          אני יוצרת אותו בעבודת יד ובהמון תשומת לב לפרטים.
+          כך נוצר תכשיט ייחודי, אישי וחד פעמי, שמרגיש באמת שלך.
+        </p>
+      </div>
+
+      <div class="personal-photos">
+        <!--
+          ADD YOUR PHOTOS TO /images FOLDER
+          Name them: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg
+          Replace the gradient divs below with <img> tags inside each .photo-item
+        -->
+        <div class="photo-grid">
+          <div class="photo-item">
+            <!-- <img src="images/photo1.jpg" alt="תכשיט פרחים 1" /> -->
+          </div>
+          <div class="photo-item">
+            <!-- <img src="images/photo2.jpg" alt="תכשיט פרחים 2" /> -->
+          </div>
+          <div class="photo-item">
+            <!-- <img src="images/photo3.jpg" alt="תכשיט פרחים 3" /> -->
+          </div>
+          <div class="photo-item">
+            <!-- <img src="images/photo4.jpg" alt="תכשיט פרחים 4" /> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       SECTION 4 — CONTACT / CTA
+  ════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="fade-section">
+      <h2 class="contact-title">בואי נדבר</h2>
+      <p class="contact-subtitle">לשאלות, הזמנות ועיצוב אישי</p>
+
+      <div class="contact-buttons">
+
+        <!-- WhatsApp button -->
+        <button class="btn btn-whatsapp" onclick="window.open('https://wa.me/972584864215', '_blank')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.112 1.528 5.836L.057 23.929a.5.5 0 0 0 .614.614l6.093-1.471A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.663-.497-5.193-1.369l-.372-.215-3.857.931.948-3.765-.236-.387A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          שלחי הודעה בוואטסאפ
+        </button>
+
+        <!-- Instagram button -->
+        <button class="btn btn-instagram" onclick="window.open('https://www.instagram.com/florans_jewelry', '_blank')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          עקבי באינסטגרם
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer>
+    Florans &copy; 2025
+  </footer>
+
+
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT
+  ════════════════════════════════════════ -->
+  <script>
+    // ─────────────────────────────────────────
+    // VIDEO CAROUSEL
+    // ADD YOUR VIDEO FILES TO /videos FOLDER
+    // Name them: video1.mp4, video2.mp4, ... video13.mp4
+    // ─────────────────────────────────────────
+    (function () {
+      const TOTAL = 12;
+      const FADE_DURATION = 1000; // ms — must match CSS transition
+
+      // Build source list
+      const sources = [];
+      for (let i = 1; i <= TOTAL; i++) {
+        sources.push('videos/video' + i + '.mp4');
+      }
+
+      // We use two <video> elements and ping-pong between them
+      // so the incoming video is already loaded/buffered before it appears.
+      const videoEls = [
+        document.getElementById('v0'),
+        document.getElementById('v1')
+      ];
+
+      const dotsContainer = document.getElementById('heroDots');
+      let dots = [];
+      let currentIndex = 0;
+      let activeSlot = 0; // 0 or 1 — which <video> is currently visible
+
+      // Build dot navigation
+      sources.forEach(function (_, i) {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'סרטון ' + (i + 1));
+        dot.addEventListener('click', function () { jumpTo(i); });
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      });
+
+      function updateDots(idx) {
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+
+      // Preload a video element with a given src
+      function loadVideo(el, src) {
+        return new Promise(function (resolve) {
+          el.src = src;
+          el.load();
+          el.oncanplay = function () { resolve(); };
+          el.onerror = function () { resolve(); }; // gracefully skip missing files
+          // Timeout fallback — if canplay never fires (e.g. file not found yet)
+          setTimeout(resolve, 4000);
+        });
+      }
+
+      function crossfade(fromSlot, toSlot) {
+        videoEls[fromSlot].classList.remove('active');
+        videoEls[toSlot].classList.add('active');
+      }
+
+      function playNext(idx) {
+        currentIndex = ((idx % TOTAL) + TOTAL) % TOTAL;
+        updateDots(currentIndex);
+
+        const nextSlot = activeSlot === 0 ? 1 : 0;
+        const nextEl = videoEls[nextSlot];
+        const currentEl = videoEls[activeSlot];
+
+        loadVideo(nextEl, sources[currentIndex]).then(function () {
+          nextEl.currentTime = 0;
+          nextEl.play().catch(function () {}); // autoplay may be blocked on some browsers
+
+          crossfade(activeSlot, nextSlot);
+          activeSlot = nextSlot;
+
+          // When next video ends, advance
+          nextEl.onended = function () {
+            playNext(currentIndex + 1);
+          };
+
+          // Cleanup old video to save memory
+          setTimeout(function () {
+            currentEl.pause();
+            currentEl.removeAttribute('src');
+            currentEl.load();
+          }, FADE_DURATION + 100);
+        });
+      }
+
+      function jumpTo(idx) {
+        // Cancel current video's onended
+        videoEls[activeSlot].onended = null;
+        playNext(idx);
+      }
+
+      // Kick off with first video
+      playNext(0);
+    })();
+
+
+    // ─────────────────────────────────────────
+    // INTERSECTION OBSERVER — section fade-in
+    // ─────────────────────────────────────────
+    (function () {
+      var elements = document.querySelectorAll('.fade-section');
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      elements.forEach(function (el) { observer.observe(el); });
+    })();
+
+
+    // ─────────────────────────────────────────
+    // PHOTO GRID — swap placeholders for real images
+    // Once you add photos to /images, uncomment the <img> tags in the HTML.
+    // The CSS gradient background acts as a placeholder until then.
+    // ─────────────────────────────────────────
+    (function () {
+      var photoItems = document.querySelectorAll('.photo-item');
+      var photoFiles = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg'];
+
+      photoItems.forEach(function (item, i) {
+        var img = new Image();
+        img.src = 'images/' + photoFiles[i];
+        img.alt = 'תכשיט פרחים ' + (i + 1);
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;border-radius:4px;';
+        img.onload = function () {
+          item.innerHTML = '';
+          item.appendChild(img);
+        };
+        // If image fails to load, gradient placeholder remains — no error shown
+      });
+    })();
+  </script>
+
+</body>
+</html>
