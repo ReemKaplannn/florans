@@ -170,75 +170,14 @@
       background: #FAF8F4;
     }
 
-    /* Inline SVG background — flowing ink-like organic shapes */
-    #about .about-bg {
+    /* Flowing botanical SVG watermark */
+    #about .floral-bg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
       z-index: 0;
-    }
-
-    /* Blob 1 — top right */
-    #about .blob1 {
-      position: absolute;
-      top: -80px;
-      right: -120px;
-      width: 520px;
-      height: 520px;
-      border-radius: 38% 62% 55% 45% / 48% 38% 62% 52%;
-      background: radial-gradient(circle at 40% 40%, rgba(200,168,106,0.13) 0%, rgba(200,168,106,0.04) 55%, transparent 75%);
-      animation: blob1 16s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    /* Blob 2 — bottom left */
-    #about .blob2 {
-      position: absolute;
-      bottom: -60px;
-      left: -100px;
-      width: 440px;
-      height: 440px;
-      border-radius: 62% 38% 45% 55% / 52% 62% 38% 48%;
-      background: radial-gradient(circle at 60% 60%, rgba(200,168,106,0.10) 0%, rgba(232,208,164,0.05) 50%, transparent 72%);
-      animation: blob2 20s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    /* Blob 3 — center flow */
-    #about .blob3 {
-      position: absolute;
-      top: 35%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 340px;
-      border-radius: 50% 50% 42% 58% / 60% 40% 60% 40%;
-      background: radial-gradient(ellipse at 50% 50%, rgba(232,216,180,0.09) 0%, transparent 65%);
-      animation: blob3 24s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    /* Thin flowing line accents */
-    #about .line-accent {
-      position: absolute;
-      pointer-events: none;
-    }
-
-    @keyframes blob1 {
-      0%,100% { border-radius: 38% 62% 55% 45% / 48% 38% 62% 52%; transform: rotate(0deg) scale(1); }
-      33%      { border-radius: 55% 45% 38% 62% / 62% 52% 48% 38%; transform: rotate(8deg) scale(1.04); }
-      66%      { border-radius: 62% 38% 62% 38% / 38% 62% 38% 62%; transform: rotate(-5deg) scale(0.97); }
-    }
-    @keyframes blob2 {
-      0%,100% { border-radius: 62% 38% 45% 55% / 52% 62% 38% 48%; transform: rotate(0deg) scale(1); }
-      40%      { border-radius: 45% 55% 62% 38% / 38% 48% 62% 52%; transform: rotate(-10deg) scale(1.06); }
-      70%      { border-radius: 38% 62% 55% 45% / 62% 38% 48% 52%; transform: rotate(6deg) scale(0.95); }
-    }
-    @keyframes blob3 {
-      0%,100% { border-radius: 50% 50% 42% 58% / 60% 40% 60% 40%; transform: translateX(-50%) scaleX(1); }
-      50%      { border-radius: 42% 58% 50% 50% / 40% 60% 40% 60%; transform: translateX(-50%) scaleX(1.08); }
     }
 
     .about-block {
@@ -250,9 +189,7 @@
     }
 
     .about-block + .about-block {
-      margin-top: 5rem;
-      padding-top: 4rem;
-      border-top: 1px solid rgba(200,168,106,0.22);
+      margin-top: 5.5rem;
     }
 
     .section-title {
@@ -484,22 +421,91 @@
 
   <!-- ══════ ABOUT ══════ -->
   <section id="about">
-    <!-- Flowing organic background shapes -->
-    <div class="blob1"></div>
-    <div class="blob2"></div>
-    <div class="blob3"></div>
-    <!-- Thin flowing SVG lines -->
-    <svg class="line-accent" style="top:0;left:0;width:100%;height:100%;opacity:0.35;" viewBox="0 0 1200 1800" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M-50 200 C 200 100, 400 400, 600 250 S 900 0, 1250 300" stroke="#C8A86A" stroke-width="0.6" fill="none" opacity="0.4"/>
-      <path d="M-50 600 C 150 500, 350 800, 650 650 S 950 400, 1250 700" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.3"/>
-      <path d="M-50 1100 C 300 950, 500 1300, 750 1100 S 1000 850, 1250 1200" stroke="#C8A86A" stroke-width="0.6" fill="none" opacity="0.35"/>
-      <path d="M-50 1500 C 200 1380, 450 1650, 700 1480 S 1000 1300, 1250 1600" stroke="#C8A86A" stroke-width="0.4" fill="none" opacity="0.25"/>
-      <!-- Small petal-like accents -->
-      <ellipse cx="80" cy="450" rx="18" ry="9" transform="rotate(-30 80 450)" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.3"/>
-      <ellipse cx="1120" cy="900" rx="14" ry="7" transform="rotate(20 1120 900)" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.25"/>
-      <ellipse cx="600" cy="1350" rx="16" ry="8" transform="rotate(-15 600 1350)" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.28"/>
-      <circle cx="150" cy="1200" r="4" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.2"/>
-      <circle cx="1050" cy="400" r="3" stroke="#C8A86A" stroke-width="0.5" fill="none" opacity="0.2"/>
+    <!--
+      Flowing botanical line-art background — inspired by organic tattoo style.
+      Single-stroke flower with wavy flowing stems, very faint gold.
+    -->
+    <svg class="floral-bg" viewBox="0 0 1200 1900" preserveAspectRatio="xMidYMid slice"
+         fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+      <!-- ── FLOWER 1 — top right area ── -->
+      <g transform="translate(880,320) rotate(-18)" opacity="0.18">
+        <!-- wavy stem down -->
+        <path d="M0,0 C 8,60 -12,120 4,180 C 18,240 -8,300 6,380 C 16,440 -10,500 0,560"
+              stroke="#C8A86A" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- side tendril left -->
+        <path d="M3,200 C -30,190 -70,210 -100,190 C -130,170 -150,140 -170,160"
+              stroke="#C8A86A" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- side tendril right -->
+        <path d="M5,280 C 35,265 75,280 100,260 C 125,242 130,210 155,225"
+              stroke="#C8A86A" stroke-width="1.1" stroke-linecap="round"/>
+        <!-- petal top -->
+        <path d="M0,0 C -10,-28 -4,-58 0,-72 C 4,-58 10,-28 0,0Z"
+              stroke="#C8A86A" stroke-width="1.3" stroke-linecap="round"/>
+        <!-- petal right -->
+        <path d="M0,0 C 26,-10 54,-2 68,2 C 54,8 26,14 0,0Z"
+              stroke="#C8A86A" stroke-width="1.3" stroke-linecap="round"/>
+        <!-- petal bottom-right -->
+        <path d="M0,0 C 20,20 28,46 28,62 C 14,50 -2,28 0,0Z"
+              stroke="#C8A86A" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- petal left -->
+        <path d="M0,0 C -26,-8 -54,0 -68,4 C -54,10 -26,16 0,0Z"
+              stroke="#C8A86A" stroke-width="1.3" stroke-linecap="round"/>
+        <!-- petal bottom-left -->
+        <path d="M0,0 C -18,22 -24,50 -22,66 C -10,52 4,26 0,0Z"
+              stroke="#C8A86A" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- center dot -->
+        <circle cx="0" cy="0" r="4" stroke="#C8A86A" stroke-width="1"/>
+      </g>
+
+      <!-- ── FLOWER 2 — bottom left area ── -->
+      <g transform="translate(220,1300) rotate(12)" opacity="0.15">
+        <!-- main stem up -->
+        <path d="M0,0 C -6,-55 14,-110 -4,-170 C -16,-225 10,-280 -2,-350 C -14,-408 8,-460 0,-520"
+              stroke="#C8A86A" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- tendril right -->
+        <path d="M-3,-200 C 28,-188 65,-205 92,-185 C 118,-166 122,-135 148,-150"
+              stroke="#C8A86A" stroke-width="1.1" stroke-linecap="round"/>
+        <!-- tendril left -->
+        <path d="M-2,-300 C -35,-285 -72,-298 -98,-278 C -122,-260 -126,-228 -152,-244"
+              stroke="#C8A86A" stroke-width="1.1" stroke-linecap="round"/>
+        <!-- petals -->
+        <path d="M0,0 C -8,28 -2,58 0,72 C 4,58 8,28 0,0Z"
+              stroke="#C8A86A" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M0,0 C 24,10 50,4 64,0 C 50,-6 24,-10 0,0Z"
+              stroke="#C8A86A" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M0,0 C -24,8 -50,2 -64,-2 C -50,-8 -24,-12 0,0Z"
+              stroke="#C8A86A" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M0,0 C 16,-22 20,-50 18,-65 C 6,-52 -4,-24 0,0Z"
+              stroke="#C8A86A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M0,0 C -16,-20 -22,-48 -20,-63 C -8,-50 6,-22 0,0Z"
+              stroke="#C8A86A" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="0" cy="0" r="3.5" stroke="#C8A86A" stroke-width="1"/>
+      </g>
+
+      <!-- ── SMALL ACCENT flower — center right ── -->
+      <g transform="translate(1050,1000) rotate(5)" opacity="0.11">
+        <path d="M0,0 C 3,35 -5,70 2,110 C 8,145 -4,180 0,220"
+              stroke="#C8A86A" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M0,0 C -6,-20 -2,-42 0,-52 C 2,-42 6,-20 0,0Z"
+              stroke="#C8A86A" stroke-width="1.1"/>
+        <path d="M0,0 C 18,-6 36,0 46,2 C 36,6 18,10 0,0Z"
+              stroke="#C8A86A" stroke-width="1.1"/>
+        <path d="M0,0 C -18,-4 -36,2 -46,4 C -36,8 -18,10 0,0Z"
+              stroke="#C8A86A" stroke-width="1.1"/>
+        <path d="M0,0 C 12,16 14,36 12,48 C 4,36 -2,18 0,0Z"
+              stroke="#C8A86A" stroke-width="1"/>
+        <circle cx="0" cy="0" r="3" stroke="#C8A86A" stroke-width="0.9"/>
+      </g>
+
+      <!-- ── Lone wavy tendril — top left ── -->
+      <path d="M 60,80 C 90,120 60,180 100,220 C 140,260 110,320 150,360 C 185,395 160,440 190,480"
+            stroke="#C8A86A" stroke-width="1" stroke-linecap="round" opacity="0.12"/>
+
+      <!-- ── Lone wavy tendril — bottom right ── -->
+      <path d="M 1140,1700 C 1110,1660 1140,1600 1100,1560 C 1060,1520 1090,1460 1050,1420"
+            stroke="#C8A86A" stroke-width="1" stroke-linecap="round" opacity="0.10"/>
+
     </svg>
 
     <div class="about-block fade-in">
