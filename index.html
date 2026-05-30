@@ -42,6 +42,187 @@
 
 
     /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    #site-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 2rem;
+      height: 56px;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    #site-nav.scrolled {
+      background: rgba(250,248,244,0.96);
+      box-shadow: 0 1px 18px rgba(44,37,32,0.08);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    #site-nav.scrolled .nav-links a {
+      color: var(--text);
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+
+    /* ══════════════════════════════
+       FAQ
+    ══════════════════════════════ */
+    #faq {
+      background: var(--bg);
+      padding: 6rem 1.5rem 5.5rem;
+    }
+    .faq-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .faq-inner .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: right;
+      direction: rtl;
+      padding: 1.3rem 0;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 400;
+      font-size: 0.97rem;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      position: relative;
+      opacity: 0.5;
+      transition: transform 0.3s ease, opacity 0.2s;
+    }
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .faq-icon::before { width: 2px; height: 12px; top: 3px; left: 8px; }
+    .faq-icon::after  { width: 12px; height: 2px; top: 8px; left: 3px; }
+    .faq-item.open .faq-icon::before { transform: rotate(90deg); opacity: 0; }
+    .faq-item.open .faq-icon { opacity: 0.8; }
+    .faq-question:hover .faq-icon { opacity: 0.8; }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 2;
+      color: var(--text-body);
+      padding-bottom: 1.3rem;
+    }
+
+
+    /* ══════════════════════════════
+       REVIEWS
+    ══════════════════════════════ */
+    #reviews {
+      background: var(--bg-alt);
+      padding: 6rem 1.5rem 5.5rem;
+    }
+    .reviews-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .reviews-inner .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+    .review-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 2px 16px rgba(44,37,32,0.06);
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.9rem;
+    }
+    .review-text {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: var(--text-body);
+      margin-bottom: 1.1rem;
+    }
+    .review-name {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 500;
+      font-size: 0.8rem;
+      color: var(--text-sec);
+      letter-spacing: 0.05em;
+    }
+
+
+    /* ══════════════════════════════
        HERO
     ══════════════════════════════ */
     #hero {
@@ -399,6 +580,15 @@
 </head>
 <body>
 
+  <!-- ══════ NAV ══════ -->
+  <nav id="site-nav">
+    <ul class="nav-links">
+      <li><a href="#gallery">גלריה כללית</a></li>
+      <li><a href="#faq">שאלות ותשובות</a></li>
+      <li><a href="#reviews">ביקורות</a></li>
+    </ul>
+  </nav>
+
   <!-- ══════ HERO ══════ -->
   <section id="hero">
     <!-- ADD YOUR VIDEO FILES TO /videos FOLDER — video1.mp4 ... video12.mp4 -->
@@ -631,6 +821,84 @@
   </section>
 
 
+  <!-- ══════ FAQ ══════ -->
+  <section id="faq">
+    <div class="faq-inner fade-in">
+      <h2 class="section-title">שאלות ותשובות</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          כמה זמן לוקח להכין תכשיט?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer"><p>בדרך כלל בין 7 ל-14 ימי עסקים מרגע אישור ההזמנה. תאריך המסירה המדויק יועבר אליך בתחילת התהליך.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          האם אפשר לבחור את הפרח?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer"><p>בהחלט! ניתן לבחור מתוך מגוון פרחים מיובשים — כגון לבנדר, ורדים זעירים, פרחי שדה ועוד. אשלח לך תמונות של האפשרויות הקיימות לאחר קבלת ההזמנה.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          מה החומרים שמשתמשים בהם?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer"><p>אני עובדת עם גולדפילד, ציפוי זהב 14K, כסף 925 ואפוקסי איכותי שמגן על הפרח לאורך זמן.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          האם ניתן לקבל תכשיט עם פרח אישי?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer"><p>כן! אם יש לך פרח עם משמעות אישית — מחתונה, מיום הולדת או כל אירוע מיוחד — ניתן לשלוח אותו אליי ואשלב אותו בתכשיט שלך.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          איך מבצעים הזמנה?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer"><p>פשוט שולחים הודעה בוואטסאפ או פונים דרך האינסטגרם. נדבר על הסגנון, תבחרי חומרים ופרחים, ונתחיל ביצירה!</p></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════ REVIEWS ══════ -->
+  <section id="reviews">
+    <div class="reviews-inner fade-in">
+      <h2 class="section-title">ביקורות</h2>
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">קיבלתי צמיד עם פרח מהחתונה שלי — יצא פשוט עוצר נשימה. נעמה עבדה בסבלנות ובדיוק, ממש הרגשתי שהיא אכפת לה מכל פרט קטן.</p>
+          <div class="review-name">מיכל כ.</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">הזמנתי עגיל לאמא שלי ליום הולדת — היא בכתה מרוב התרגשות. התכשיט מהמם, השירות מהיר ומקצועי, ממליצה בחום!</p>
+          <div class="review-name">שירה מ.</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">כבר הזמנתי פעמיים ובכל פעם יוצא יותר יפה. האיכות מדהימה, הפרחים שמורים בצורה מושלמת, והעיצוב מרגיש יוקרתי לגמרי.</p>
+          <div class="review-name">דנה ר.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <!-- ══════ FOOTER ══════ -->
   <footer>
     <div class="footer-name">Florans</div>
@@ -751,6 +1019,35 @@
       lbClose.addEventListener('click', close);
       lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+
+
+    // ─────────────────────────────────
+    // NAV — transparent over hero, solid on scroll
+    // ─────────────────────────────────
+    (function () {
+      var nav = document.getElementById('site-nav');
+      function update() {
+        if (window.scrollY > 60) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+
+
+    // ─────────────────────────────────
+    // FAQ ACCORDION
+    // ─────────────────────────────────
+    (function () {
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.faq-item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function (el) { el.classList.remove('open'); });
+          if (!isOpen) item.classList.add('open');
+        });
+      });
     })();
 
 
